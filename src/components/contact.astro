@@ -1,0 +1,167 @@
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="cgrid">
+      <div class="contact-copy">
+        <div class="mm eyebrow rv">Contact</div>
+        <p class="lead rv d1">Tell us what you are looking for. Discretion is the default.</p>
+        <a class="btn btn-p rv d2" href="mailto:info@mamecapital.com">
+          Request an introduction <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="loc rv d2">
+        <h3>Location</h3>
+        <address>Bahnhofstrasse 10<br />8001 Zürich<br />Switzerland</address>
+        <ul>
+          <li>
+            <a href="mailto:info@mamecapital.com">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="1.5" />
+                <path d="M3.5 6l8.5 7 8.5-7" />
+              </svg>
+              <span>info@mamecapital.com</span>
+            </a>
+          </li>
+          <li>
+            <a href="tel:+41434562510">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z" />
+              </svg>
+              <span>+41 43 456 2510</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/company/28567539" rel="noopener">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7" />
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    border-top: 1px solid var(--line);
+    background: var(--bg);
+  }
+
+  .contact .wrap {
+    padding: 144px 32px;
+  }
+
+  .cgrid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    column-gap: 56px;
+    align-items: start;
+  }
+
+  .contact-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 120px;
+  }
+
+  .contact-copy .eyebrow {
+    color: var(--accent);
+  }
+
+  .contact-copy .lead {
+    margin: 0;
+    max-width: 660px;
+    color: var(--dim);
+  }
+
+  .contact-copy .btn {
+    align-self: flex-start;
+    color: var(--bg2);
+  }
+
+  .contact-copy .btn:hover {
+    color: var(--bg2);
+  }
+
+  .loc h3 {
+    margin: 0 0 16px;
+    color: var(--fg);
+    font-family: 'Newsreader', Georgia, serif;
+    font-optical-sizing: auto;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .loc address {
+    color: var(--dim);
+    font-family: 'Instrument Sans', system-ui, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    line-height: 1.75;
+  }
+
+  .loc ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 28px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .loc li a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    gap: 14px;
+    color: var(--fg);
+    font-family: 'Instrument Sans', system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 24px;
+    text-decoration: none;
+  }
+
+  .loc li a:hover {
+    color: var(--accent);
+  }
+
+  .loc li a:focus-visible {
+    border-radius: 2px;
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  .loc svg {
+    flex: none;
+  }
+
+  @media (max-width: 860px) {
+    .contact .wrap {
+      padding-top: 88px;
+      padding-bottom: 88px;
+    }
+
+    .cgrid {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 56px;
+      align-items: start;
+    }
+
+    .contact-copy {
+      margin-top: 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .contact .wrap {
+      padding-right: 16px;
+      padding-left: 16px;
+    }
+  }
+</style>

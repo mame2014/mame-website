@@ -1,0 +1,177 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/hero.astro';
+import Contact from '../components/contact.astro';
+---
+
+<Layout title="MAME Capital">
+  <header>
+    <div class="wrap nav">
+      <a class="brand mm" href="#top" aria-label="MAME Capital home"><i aria-hidden="true"></i>MAME Capital</a>
+      <nav class="navlinks mm" aria-label="Primary"><a class="nl" href="#services">Services</a><a class="nl" href="#process">Process</a><a class="nl" href="#about">About</a></nav>
+      <a class="btn btn-s btn-sm" href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <Hero />
+
+  <div class="status">
+    <div class="wrap mm">
+      <span><span class="faint">role</span> <b style="color:var(--mauve)">introducer</b></span>
+      <span><span class="faint">access</span> <b>off_market</b></span>
+      <span><span class="faint">client_funds_held</span> <b style="color:var(--green)" data-count="0.00">0.00</b></span>
+      <span><span class="faint">seat</span> <b>bahnhofstrasse, zürich</b></span>
+      <span><span class="faint">lang</span> <b>en de it</b></span>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <h2 class="disp rv">Services<span style="color:var(--mauve)">.</span></h2>
+      <div class="g3">
+        <article class="panel rv">
+          <h3>Deal sourcing</h3>
+          <p>Off-market real estate and private-market opportunities matched to your criteria. Buy-side or sell-side, we find the asset or the counterparty and introduce you.</p>
+          <div class="pm mm"><span><span class="y">+</span> <span class="dim">buy-side search mandates</span></span><span><span class="y">+</span> <span class="dim">sell-side search mandates</span></span><span><span class="y">+</span> <span class="dim">off-market residential and commercial</span></span><span><span class="y">+</span> <span class="dim">private-market opportunities matched to your criteria</span></span><span><span class="y">+</span> <span class="dim">international reach</span></span><span><span class="y">+</span> <span class="dim">qualified, verified counterparties only</span></span><span><span class="y">+</span> <span class="dim">success fee on close, nothing upfront</span></span></div>
+        </article>
+        <article class="panel rv d1">
+          <h3>Capital introduction</h3>
+          <p>Qualified investors introduced to operating companies raising debt or equity, to development projects by operating developers, and to funds with supervised managers.</p>
+          <div class="pm mm"><span><span class="y">+</span> <span class="dim">private debt · private equity · funds</span></span><span><span class="y">+</span> <span class="dim">real estate development projects</span></span><span><span class="y">+</span> <span class="dim">club-style introductions, several investors to one opportunity</span></span><span><span class="y">+</span> <span class="dim">family offices, HNWI and institutions</span></span><span><span class="y">+</span> <span class="dim">principals only, no intermediary chains</span></span></div>
+        </article>
+        <article class="panel rv d2">
+          <h3>Securitization access</h3>
+          <p>An overview of what the market offers — AMCs, notes, fund wrappers — and an introduction to a specialised provider who advises, structures and administers.</p>
+          <div class="pm mm"><span><span class="y">+</span> <span class="dim">overview of available structures</span></span><span><span class="y">+</span> <span class="dim">AMCs, notes and fund wrappers</span></span><span><span class="y">+</span> <span class="dim">for real estate, private debt and private equity assets</span></span><span><span class="y">+</span> <span class="dim">introduction to a specialised provider</span></span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" class="alt">
+    <div class="wrap">
+      <h2 class="disp rv">Process<span style="color:var(--mauve)">.</span></h2>
+      <div class="log mm">
+        <div class="rv"><span class="k">[01]</span><span class="t">Brief</span><span class="d">You tell us what you need: asset, ticket, geography, return profile.</span></div>
+        <div class="rv d1"><span class="k">[02]</span><span class="t">Match</span><span class="d">We screen our network. Only counterparties that fit get a call.</span></div>
+        <div class="rv d2"><span class="k">[03]</span><span class="t">Introduce</span><span class="d">A direct, named introduction between principals.</span></div>
+        <div class="rv d3"><span class="k ok">[04]</span><span class="t">Step aside</span><span class="d">You negotiate with your own advisors. We are paid only if it closes.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="wrap g2" style="padding-top:144px;padding-bottom:144px">
+      <h2 class="disp rv" style="margin:0">Small by design<span style="color:var(--mauve)">.</span></h2>
+      <div class="rv d1" style="display:flex;flex-direction:column;gap:22px">
+        <p>MAME Capital GmbH was founded in Zürich in 2014 and works as a small team of associates, led by its founder. A network built one relationship at a time across Switzerland, Europe and the Gulf.</p>
+        <p class="dim">No investment advice, no product structuring, no transaction execution. That keeps us independent of every party at the table — which is why the table opens.</p>
+        <div class="people">
+          <div>
+            <span class="pl"><span class="pn">René Prince<span class="pc mm">, CFA, FRM, CAIA</span></span></span>
+            <span class="pr mm">Founder</span>
+          </div>
+          <div>
+            <span class="pl"><span class="pn">Andrea Luzzi<span class="pc mm">, CAIA, PRM</span></span></span>
+            <span class="pr mm">Associate</span>
+          </div>
+          <div>
+            <span class="pl"><span class="pn">Paolo Pellegrinelli</span></span>
+            <span class="pr mm">Associate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Contact />
+
+  <footer>
+    <div class="wrap">
+      <p>MAME Capital GmbH acts solely as an introducer. It does not provide investment advice, does not offer or distribute financial instruments, does not structure or administer vehicles and does not hold client assets. Nothing on this site is an offer or a recommendation.</p>
+      <div class="fl mm"><span>© 2026 MAME Capital GmbH · Zürich</span><span style="display:flex;gap:24px"><a class="nl" href="#privacy">Privacy</a><a class="nl" href="/impressum">Impressum</a></span></div>
+    </div>
+  </footer>
+
+</Layout>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wdth,wght@75..112.5,300..700&family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap');
+
+  :root{
+    --bg:#262A36; --bg2:#1E2029; --line:#3A3F50; --line2:#585B70;
+    --fg:#CDD6F4; --dim:#A6ADC8; --faint:#7F849C;
+    --mauve:#9DB9A0; --pink:#BDD3BF; --green:#9DB9A0; --red:#F38BA8;
+    --accent:var(--mauve); --accent-hover:var(--pink);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:'Instrument Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:var(--mauve);text-decoration:none}a:hover{color:var(--pink)}
+  .mm{font-family:'Martian Mono',ui-monospace,monospace}
+  .disp{font-family:'Newsreader',Georgia,serif;font-optical-sizing:auto;font-weight:400;letter-spacing:-0.025em}
+  .dim{color:var(--dim)}.faint{color:var(--faint)}
+  .wrap{max-width:1280px;margin:0 auto;padding-left:32px;padding-right:32px}
+  @media(max-width:640px){.wrap{padding-left:16px;padding-right:16px}}
+
+  header{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(30,32,41,.85);backdrop-filter:blur(10px)}
+  .nav{height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .brand{display:flex;align-items:center;gap:10px;color:var(--fg);font-size:15px;font-weight:600}
+  .brand:hover{color:var(--fg)}
+  .brand i{display:inline-block;width:10px;height:10px;background:var(--mauve);border-radius:2px}
+  .nl{font-size:13px;color:var(--dim)}.nl:hover{color:var(--mauve)}
+  .navlinks{display:flex;gap:32px}
+  @media(max-width:860px){.navlinks{display:none}}
+  .btn{display:inline-flex;align-items:center;gap:12px;min-height:50px;padding:0 24px;border-radius:8px;font-family:'Martian Mono',monospace;font-size:14px;transition:background .2s,color .2s,border-color .2s}
+  .btn-p{background:var(--mauve);color:var(--bg2)}.btn-p:hover{background:var(--pink);color:var(--bg2)}
+  .btn-s{border:1px solid var(--line2);color:var(--fg)}.btn-s:hover{border-color:var(--mauve);color:var(--mauve)}
+  .btn-sm{min-height:40px;padding:0 16px;font-size:13px}
+
+  .eyebrow{font-size:13px;color:var(--mauve);letter-spacing:.08em;text-transform:uppercase}
+  .cursor{display:inline-block;width:9px;height:18px;background:var(--mauve);margin-left:6px;vertical-align:-3px;animation:blink 1.1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .lead{margin:0;font-size:21px;line-height:1.55;max-width:660px;color:var(--dim)}
+
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+  .rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+  @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.cursor{animation:none}}
+
+  .status{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .status .wrap{padding-top:18px;padding-bottom:18px;display:flex;flex-wrap:wrap;gap:12px 40px;font-size:13px}
+  .status b{font-weight:400;color:var(--fg)}
+
+  section .wrap{padding-top:144px;padding-bottom:144px}
+  @media(max-width:860px){section .wrap{padding-top:88px;padding-bottom:88px}}
+  h2{margin:0 0 48px;font-size:52px;line-height:1.05}
+  @media(max-width:860px){h2{font-size:36px}}
+  .g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px}
+  @media(max-width:860px){.g3,.g2{grid-template-columns:minmax(0,1fr);gap:24px}}
+  .panel{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:32px;display:grid;grid-row:span 3;grid-template-rows:subgrid;gap:20px;transition:border-color .25s,transform .25s}
+  .panel:hover{border-color:var(--mauve);transform:translateY(-3px)}
+  .panel h3{margin:0;font-family:'Newsreader',Georgia,serif;font-optical-sizing:auto;font-size:32px;font-weight:400;letter-spacing:-.02em}
+  .panel p{margin:0;font-size:16px;line-height:1.6;color:var(--dim)}
+  .pm{align-self:start;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px;font-size:12px;line-height:1.6}
+  .pm .y{color:var(--green)}.pm .n{color:var(--red)}
+  .alt{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .log{display:flex;flex-direction:column;font-size:15px;line-height:1.6}
+  .log>div{display:flex;flex-wrap:wrap;gap:8px 28px;padding:20px 0;border-bottom:1px dashed var(--line)}
+  .log>div:last-child{border-bottom:0}
+  .log .k{color:var(--mauve);min-width:60px}.log .k.ok{color:var(--green)}
+  .log .t{min-width:140px}
+  .log .d{flex:1 1 400px;font-family:'Instrument Sans',sans-serif;font-size:17px;color:var(--dim)}
+  .about p{margin:0;font-size:18px;line-height:1.65}
+  .people{margin-top:14px;border-top:1px solid var(--line)}
+  .people>div{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 24px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .pn{font-family:'Newsreader',Georgia,serif;font-optical-sizing:auto;font-size:24px;letter-spacing:-.015em}
+  .pl{display:flex;align-items:center;gap:16px}
+  .pc{font-size:13px;color:var(--dim);letter-spacing:.02em;margin-left:2px}
+  .pr{font-size:12px;color:var(--faint);letter-spacing:.08em;text-transform:uppercase}
+  footer{background:var(--bg2);border-top:1px solid var(--line)}
+  footer .wrap{padding-top:40px;padding-bottom:40px;display:flex;flex-direction:column;gap:20px}
+  footer p{margin:0;font-size:13px;line-height:1.7;max-width:960px;color:var(--faint)}
+  .fl{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:12px;color:var(--faint)}
+</style>
+

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="MAME Capital creates lasting value through strategic investment, patient capital, and disciplined growth."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{Astro.props.title || 'MAME Capital'}</title>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'MAME Capital GmbH',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Bahnhofstrasse 10',
+          postalCode: '8001',
+          addressLocality: 'Zürich',
+          addressCountry: 'CH',
+        },
+        email: 'info@mamecapital.com',
+        telephone: '+41 43 456 2510',
+      })}
+    ></script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+  }
+</style>
