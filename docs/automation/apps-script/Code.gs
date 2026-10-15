@@ -21,7 +21,7 @@ const HEADERS = ['Ref', 'Received', 'Name', 'Email', 'Phone', 'Company', 'Role',
   'Asset class', 'Region', 'Size', 'Country', 'Message', 'Status'];
 
 const AUTO_REPLY_SUBJECT = 'Your enquiry to MAME Capital';
-const AUTO_REPLY_BODY = (e) => `Dear ${e.name},
+const autoReplyBody_ = (e) => `Dear ${e.name},
 
 Thank you for your enquiry. It has reached us, and we will be in touch within two business days.
 
@@ -118,7 +118,7 @@ function handleEnquiry_(e) {
   sendMail_({
     to: e.email,
     subject: AUTO_REPLY_SUBJECT,
-    body: AUTO_REPLY_BODY(e),
+    body: autoReplyBody_(e),
     name: 'MAME Capital',
     replyTo: NOTIFY_EMAIL,
   });
