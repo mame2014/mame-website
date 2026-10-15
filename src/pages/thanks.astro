@@ -1,0 +1,69 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Thank you | MAME Capital">
+  <main class="thanks">
+    <div class="wrap">
+      <a class="back" href="/"><img src="/brand/mame-logo-on-dark.svg" alt="MAME Capital home" width="174" height="42" /></a>
+      <h1>Thank you.</h1>
+      <p>Your enquiry has reached us. We will be in touch shortly, discreetly.</p>
+      <p><a href="/">Back to the homepage</a></p>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .thanks {
+    min-height: 100vh;
+    background: #262a36;
+    color: #e4e0db;
+    font-family: 'Instrument Sans', system-ui, sans-serif;
+  }
+
+  .wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 64px 32px 144px;
+  }
+
+  .back img {
+    display: block;
+    height: 42px;
+    width: auto;
+  }
+
+  h1 {
+    margin: 80px 0 24px;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 64px;
+    font-weight: 400;
+    line-height: 1.05;
+  }
+
+  p {
+    margin: 12px 0 0;
+    color: #b8b3b0;
+    font-size: 18px;
+  }
+
+  p a {
+    color: #e4e0db;
+    text-decoration: none;
+  }
+
+  p a:hover {
+    color: #b3a265;
+  }
+
+  @media (max-width: 640px) {
+    .wrap {
+      padding-right: 16px;
+      padding-left: 16px;
+    }
+
+    h1 {
+      font-size: 48px;
+    }
+  }
+</style>
