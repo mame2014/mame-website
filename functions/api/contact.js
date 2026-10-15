@@ -58,7 +58,13 @@ export async function onRequestPost({ request, env, waitUntil }) {
   if (!data.name || data.name.length > 120) errors.name = 'Please enter your name.';
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(data.email) || data.email.length > 254) errors.email = 'Please enter a valid email address.';
   if (data.company.length > 160) errors.company = 'Please shorten this field.';
-  if (data.phone.length > 40) errors.phone = 'Please shorten this field.';
+  if (data.phone) {
+    // International format with country code, stored as E.164 (e.g. +41434562510). "00" prefix is accepted as "+".
+    // "(0)" is the domestic trunk zero written after the country code, e.g. +41 (0)79 …; drop it.
+    const phone = data.phone.replace(/\(0\)/g, '').replace(/[\s().\-\/]/g, '').replace(/^00/, '+');
+    if (/^\+[1-9]\d{7,14}$/.test(phone)) data.phone = phone;
+    else errors.phone = 'Please enter the number with country code, e.g. +41 79 123 45 67.';
+  }
   if (!ROLES.includes(data.role)) errors.role = 'Please choose an option.';
   if (!INTERESTS.includes(data.interest)) errors.interest = 'Please choose an option.';
   if (data.asset_class && !ASSET_CLASSES.includes(data.asset_class)) errors.asset_class = 'Please choose an option.';
