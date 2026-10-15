@@ -7,11 +7,33 @@ import Contact from '../components/contact.astro';
 <Layout title="MAME Capital">
   <header>
     <div class="wrap nav">
-      <a class="brand" href="#top"><img src="/brand/mame-logo-on-dark.svg" alt="MAME Capital" width="174" height="42" /></a>
+      <a class="brand" href="#top"><img src="/brand/mame-logo-on-dark.svg?v=2" alt="MAME Capital" width="199" height="48" /></a>
       <nav class="navlinks" aria-label="Primary"><a class="nl" href="#services">Services</a><a class="nl" href="#process">Process</a><a class="nl" href="#about">About</a></nav>
-      <a class="btn btn-s btn-sm" href="#contact">Contact</a>
+      <div class="nav-r">
+        <a class="btn btn-s btn-sm" href="#contact">Contact</a>
+        <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span></button>
+      </div>
     </div>
+    <nav class="mnav" id="mnav" aria-label="Mobile" hidden>
+      <div class="wrap"><a href="#services">Services</a><a href="#process">Process</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+    </nav>
   </header>
+
+  <script>
+    const burger = document.querySelector('.burger') as HTMLButtonElement | null;
+    const mnav = document.getElementById('mnav');
+    if (burger && mnav) {
+      const setOpen = (open: boolean) => {
+        burger.setAttribute('aria-expanded', String(open));
+        burger.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
+        mnav.hidden = !open;
+      };
+      burger.addEventListener('click', () => setOpen(mnav.hidden));
+      mnav.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('a')) setOpen(false); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !mnav.hidden) { setOpen(false); burger.focus(); } });
+      matchMedia('(min-width: 861px)').addEventListener('change', (e) => { if (e.matches) setOpen(false); });
+    }
+  </script>
 
   <Hero />
 
@@ -117,12 +139,26 @@ import Contact from '../components/contact.astro';
   header{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(30,32,41,.85);backdrop-filter:blur(10px)}
   .nav{height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
   .brand{display:flex;align-items:center}
-  .brand img{display:block;height:42px;width:auto}
-  @media(max-width:640px){.brand img{height:32px}}
+  .brand img{display:block;height:48px;width:auto}
+  @media(max-width:640px){.brand img{height:36px}}
   .nl{font-size:13px;color:var(--dim)}.nl:hover{color:var(--mauve)}
   .navlinks{display:flex;gap:36px}
   .navlinks .nl{font-size:15px;font-weight:500;letter-spacing:.01em}
   @media(max-width:860px){.navlinks{display:none}}
+  .nav-r{display:flex;align-items:center;gap:12px}
+  .burger{display:none;position:relative;width:44px;height:44px;margin-right:-8px;padding:0;border:0;background:none;color:var(--fg);cursor:pointer}
+  .burger span{position:absolute;left:11px;width:22px;height:1.5px;background:currentColor;transition:transform .25s,top .25s}
+  .burger span:first-child{top:17px}.burger span:last-child{top:25px}
+  .burger[aria-expanded="true"] span:first-child{top:21px;transform:rotate(45deg)}
+  .burger[aria-expanded="true"] span:last-child{top:21px;transform:rotate(-45deg)}
+  .burger:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+  .mnav{border-top:1px solid var(--line)}
+  .mnav .wrap{display:flex;flex-direction:column;padding-top:8px;padding-bottom:16px}
+  .mnav a{padding:14px 0;border-bottom:1px solid var(--line);color:var(--fg);font-family:'Newsreader',Georgia,serif;font-size:26px;letter-spacing:-.01em}
+  .mnav a:last-child{border-bottom:0}
+  .mnav a:hover{color:var(--accent)}
+  @media(max-width:860px){.burger{display:block}}
+  @media(max-width:480px){.nav-r .btn{display:none}}
   .btn{display:inline-flex;align-items:center;gap:12px;min-height:50px;padding:0 24px;border-radius:8px;font-family:'Instrument Sans',system-ui,sans-serif;font-size:16px;font-weight:500;transition:background .2s,color .2s,border-color .2s}
   .btn-p{background:var(--mauve);color:var(--bg2)}.btn-p:hover{background:var(--pink);color:var(--bg2)}
   .btn-s{border:1px solid var(--line2);color:var(--fg)}.btn-s:hover{border-color:var(--mauve);color:var(--mauve)}
