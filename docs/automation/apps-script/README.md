@@ -6,13 +6,15 @@ For every contact-form enquiry, the website (`functions/api/contact.js`) stores 
 2. sends the auto-reply to the sender from info@mamecapital.com,
 3. sends the notification to info@mamecapital.com (reply goes straight to the sender).
 
-## Setup (signed in as info@mamecapital.com)
+## Setup (signed in as rene.prince@mamecapital.com)
+
+0. info@ is an alias of rene.prince@ (Admin console → user → Alternate email). For Gmail to send *from* it, it must also be listed under **Gmail → Settings → See all settings → Accounts → "Send mail as"**. If missing: *Add another email address* → name "MAME Capital", address info@mamecapital.com, keep *Treat as an alias* ticked → Next. No verification is needed for your own alias.
 
 1. Create a Google Sheet named **MAME Leads**.
 2. **Extensions → Apps Script**. Replace the contents of `Code.gs` with [Code.gs](Code.gs).
 3. **Project Settings** (gear) → tick **Show "appsscript.json"** → back in the editor, replace `appsscript.json` with [appsscript.json](appsscript.json). Save.
-4. Select the function **`setup`** → **Run** → allow access when asked. It creates the `Leads` tab with headers and logs the **WEBHOOK_KEY** (View → Logs / Execution log).
-5. Optional check: run **`testEnquiry`** → a test row appears and two emails arrive at info@. Delete the test row afterwards.
+4. Select the function **`setup`** → **Run** → allow access when asked. Google should ask for exactly two permissions: *only this spreadsheet* and *send email on your behalf*. If it asks for more, the manifest wasn't saved. It creates the `Leads` tab with headers and logs the **WEBHOOK_KEY** (View → Logs / Execution log).
+5. Optional check: run **`testEnquiry`** → a test row appears and two emails arrive at info@ (sent from the info@ alias). Delete the test row afterwards.
 6. **Deploy → New deployment** → type **Web app** → *Execute as:* **Me** · *Who has access:* **Anyone** → **Deploy** → copy the **Web app URL** (ends in `/exec`).
 7. In Cloudflare (**Workers & Pages → mame-website → Settings → Variables and Secrets**), add as type **Secret**:
    `WEBHOOK_URL` = `<Web app URL>?key=<WEBHOOK_KEY>`

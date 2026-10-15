@@ -2,14 +2,18 @@
  * MAME Capital — website enquiries → Google Sheet + auto-reply + notification.
  *
  * Runs as a Google Apps Script web app bound to the "MAME Leads" spreadsheet,
- * owned by info@mamecapital.com. The website (functions/api/contact.js) POSTs
- * each enquiry as JSON to:  <web app URL>?key=<WEBHOOK_KEY>
+ * owned by rene.prince@mamecapital.com. Both emails go out from the info@ alias
+ * (Gmail → Settings → Accounts → "Send mail as" must list it).
+ * The website (functions/api/contact.js) POSTs each enquiry as JSON to:
+ *   <web app URL>?key=<WEBHOOK_KEY>
  *
  * Setup: see docs/automation/apps-script/README.md
  */
 
 const SHEET_NAME = 'Leads';
 const NOTIFY_EMAIL = 'info@mamecapital.com';
+// Sender of both emails: an alias of the script owner's account (Gmail "Send mail as").
+const FROM_EMAIL = 'info@mamecapital.com';
 const TIME_ZONE = 'Europe/Zurich';
 
 // Columns A–N are filled by this script. Add your own columns (Owner, Next step, Notes…) after them.
@@ -111,7 +115,7 @@ function handleEnquiry_(e) {
     lock.releaseLock();
   }
 
-  MailApp.sendEmail({
+  sendMail_({
     to: e.email,
     subject: AUTO_REPLY_SUBJECT,
     body: AUTO_REPLY_BODY(e),
@@ -119,7 +123,7 @@ function handleEnquiry_(e) {
     replyTo: NOTIFY_EMAIL,
   });
 
-  MailApp.sendEmail({
+  sendMail_({
     to: NOTIFY_EMAIL,
     subject: `New enquiry: ${e.interest} — ${e.name}`,
     body: [
@@ -144,6 +148,23 @@ function handleEnquiry_(e) {
   });
 
   return { ok: true };
+}
+
+// Sends a plain-text email from FROM_EMAIL via the Gmail API (send-only permission).
+function sendMail_({ to, subject, body, name, replyTo }) {
+  const b64 = (str) => Utilities.base64Encode(str, Utilities.Charset.UTF_8);
+  const mime = [
+    `From: =?UTF-8?B?${b64(name)}?= <${FROM_EMAIL}>`,
+    `To: ${to}`,
+    `Reply-To: ${replyTo}`,
+    `Subject: =?UTF-8?B?${b64(subject)}?=`,
+    'MIME-Version: 1.0',
+    'Content-Type: text/plain; charset=UTF-8',
+    'Content-Transfer-Encoding: base64',
+    '',
+    b64(body).match(/.{1,76}/g).join('\r\n'),
+  ].join('\r\n');
+  Gmail.Users.Messages.send({ raw: Utilities.base64EncodeWebSafe(mime, Utilities.Charset.UTF_8) }, 'me');
 }
 
 function getSheet_() {
