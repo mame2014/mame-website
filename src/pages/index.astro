@@ -7,7 +7,7 @@ import Contact from '../components/contact.astro';
 <Layout title="MAME Capital">
   <header>
     <div class="wrap nav">
-      <a class="brand" href="#top"><img src="/images/mame-logo-on-dark.svg?v=8" alt="MAME Capital" width="174" height="42" /></a>
+      <a class="brand" href="#top"><img src="/brand/mame-logo-on-dark.svg" alt="MAME Capital" width="174" height="42" /></a>
       <nav class="navlinks" aria-label="Primary"><a class="nl" href="#services">Services</a><a class="nl" href="#process">Process</a><a class="nl" href="#about">About</a></nav>
       <a class="btn btn-s btn-sm" href="#contact">Contact</a>
     </div>
@@ -118,6 +118,7 @@ import Contact from '../components/contact.astro';
   .nav{height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
   .brand{display:flex;align-items:center}
   .brand img{display:block;height:42px;width:auto}
+  @media(max-width:640px){.brand img{height:32px}}
   .nl{font-size:13px;color:var(--dim)}.nl:hover{color:var(--mauve)}
   .navlinks{display:flex;gap:36px}
   .navlinks .nl{font-size:15px;font-weight:500;letter-spacing:.01em}

@@ -18,3 +18,4 @@
 /wp-admin/*                             /           301
 /wp-login.php                           /           301
 /feed/*                                 /           301
+/favicon.ico                            /brand/favicon.ico  301
