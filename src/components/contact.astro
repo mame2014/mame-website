@@ -18,7 +18,7 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
           </div>
           <div class="row">
             <label class="f"><span>Company or family office</span><input name="company" autocomplete="organization" maxlength="160" /></label>
-            <label class="f"><span>Phone</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="40" placeholder="+41 79 123 45 67" /></label>
+            <label class="f"><span>Phone</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="40" placeholder="+41 XX XXX XX XX" /></label>
           </div>
           <div class="row">
             <label class="f"><span>I am <i aria-hidden="true">*</i></span>
@@ -213,7 +213,7 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
   }
 
   .f input::placeholder {
-    color: var(--faint);
+    color: var(--line2);
   }
 
   .f textarea {
