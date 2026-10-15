@@ -1,0 +1,104 @@
+{
+  "name": "MAME website enquiries",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "mame-enquiry",
+        "authentication": "headerAuth",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "a1f0c6e2-0001-4a10-9a01-000000000001",
+      "name": "Website enquiry",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "mame-enquiry"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "c01", "name": "Ref", "value": "={{ $json.body.id }}", "type": "string" },
+            { "id": "c02", "name": "Received", "value": "={{ DateTime.fromISO($json.body.created_at).setZone('Europe/Zurich').toFormat('yyyy-MM-dd HH:mm') }}", "type": "string" },
+            { "id": "c03", "name": "Name", "value": "={{ $json.body.name }}", "type": "string" },
+            { "id": "c04", "name": "Email", "value": "={{ $json.body.email }}", "type": "string" },
+            { "id": "c05", "name": "Phone", "value": "={{ $json.body.phone || '' }}", "type": "string" },
+            { "id": "c06", "name": "Company", "value": "={{ $json.body.company || '' }}", "type": "string" },
+            { "id": "c07", "name": "Role", "value": "={{ $json.body.role }}", "type": "string" },
+            { "id": "c08", "name": "Interest", "value": "={{ $json.body.interest }}", "type": "string" },
+            { "id": "c09", "name": "Asset class", "value": "={{ $json.body.asset_class || '' }}", "type": "string" },
+            { "id": "c10", "name": "Region", "value": "={{ $json.body.region || '' }}", "type": "string" },
+            { "id": "c11", "name": "Size", "value": "={{ $json.body.size || '' }}", "type": "string" },
+            { "id": "c12", "name": "Country", "value": "={{ $json.body.country || '' }}", "type": "string" },
+            { "id": "c13", "name": "Message", "value": "={{ $json.body.message }}", "type": "string" },
+            { "id": "c14", "name": "Status", "value": "New", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1f0c6e2-0002-4a10-9a01-000000000002",
+      "name": "Map to sheet columns",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [240, 0]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": { "__rl": true, "mode": "url", "value": "PASTE_GOOGLE_SHEET_URL_HERE" },
+        "sheetName": { "__rl": true, "mode": "name", "value": "Leads" },
+        "columns": { "mappingMode": "autoMapInputData", "value": {} },
+        "options": {}
+      },
+      "id": "a1f0c6e2-0003-4a10-9a01-000000000003",
+      "name": "Add row to Leads sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [480, 0]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Map to sheet columns').item.json.Email }}",
+        "subject": "Your enquiry to MAME Capital",
+        "emailType": "text",
+        "message": "=Dear {{ $('Map to sheet columns').item.json.Name }},\n\nThank you for your enquiry. It has reached us, and we will be in touch within two business days.\n\nYour enquiry is treated confidentially. We share your details with a potential counterparty only after you have agreed to that specific introduction.\n\nKind regards\n\nMAME Capital GmbH\nBahnhofstrasse 10, 8001 Zürich\n+41 43 456 2510 · mamecapital.com\n\nRef: {{ $('Map to sheet columns').item.json.Ref }}",
+        "options": { "appendAttribution": false, "senderName": "MAME Capital" }
+      },
+      "id": "a1f0c6e2-0004-4a10-9a01-000000000004",
+      "name": "Auto-reply to sender",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [720, -120],
+      "webhookId": "a1f0c6e2-0004-4a10-9a01-0000000000a4"
+    },
+    {
+      "parameters": {
+        "sendTo": "info@mamecapital.com",
+        "subject": "=New enquiry: {{ $('Map to sheet columns').item.json.Interest }} — {{ $('Map to sheet columns').item.json.Name }}",
+        "emailType": "text",
+        "message": "=Name: {{ $('Map to sheet columns').item.json.Name }}\nEmail: {{ $('Map to sheet columns').item.json.Email }}\nPhone: {{ $('Map to sheet columns').item.json.Phone || '—' }}\nCompany: {{ $('Map to sheet columns').item.json.Company || '—' }}\nRole: {{ $('Map to sheet columns').item.json.Role }}\nInterested in: {{ $('Map to sheet columns').item.json.Interest }}\nAsset class: {{ $('Map to sheet columns').item.json['Asset class'] || '—' }}\nRegion: {{ $('Map to sheet columns').item.json.Region || '—' }}\nIndicative size: {{ $('Map to sheet columns').item.json.Size || '—' }}\nCountry (by IP): {{ $('Map to sheet columns').item.json.Country || '—' }}\n\n{{ $('Map to sheet columns').item.json.Message }}\n\nRef: {{ $('Map to sheet columns').item.json.Ref }}\nSheet: PASTE_GOOGLE_SHEET_URL_HERE",
+        "options": { "appendAttribution": false, "senderName": "MAME website", "replyTo": "={{ $('Map to sheet columns').item.json.Email }}" }
+      },
+      "id": "a1f0c6e2-0005-4a10-9a01-000000000005",
+      "name": "Notify info@",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [720, 120],
+      "webhookId": "a1f0c6e2-0005-4a10-9a01-0000000000a5"
+    }
+  ],
+  "connections": {
+    "Website enquiry": { "main": [[{ "node": "Map to sheet columns", "type": "main", "index": 0 }]] },
+    "Map to sheet columns": { "main": [[{ "node": "Add row to Leads sheet", "type": "main", "index": 0 }]] },
+    "Add row to Leads sheet": {
+      "main": [[
+        { "node": "Auto-reply to sender", "type": "main", "index": 0 },
+        { "node": "Notify info@", "type": "main", "index": 0 }
+      ]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "active": false
+}
