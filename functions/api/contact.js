@@ -113,7 +113,11 @@ export async function onRequestPost({ request, env, waitUntil }) {
   }
 
   // Notifications run after the response is sent; the stored row is the source of truth.
-  waitUntil(Promise.allSettled([notifyEmail(env, enquiry), forwardWebhook(env, enquiry)]));
+  waitUntil(
+    Promise.allSettled([notifyEmail(env, enquiry), forwardWebhook(env, enquiry)]).then((results) =>
+      results.forEach((r) => r.status === 'rejected' && console.error('Notification failed', r.reason))
+    )
+  );
 
   return reply(wantsJson, 200, { ok: true });
 }
@@ -171,8 +175,10 @@ async function forwardWebhook(env, e) {
   const headers = { 'Content-Type': 'application/json' };
   if (env.WEBHOOK_SECRET) headers['X-Webhook-Secret'] = env.WEBHOOK_SECRET;
   const res = await fetch(env.WEBHOOK_URL, { method: 'POST', headers, body: JSON.stringify({ type: 'enquiry', ...e }) });
-  if (!res.ok) {
-    console.error('Webhook failed', res.status);
+  // Google Apps Script always answers 200, so also honour an explicit { ok: false } in a JSON reply.
+  const reply = (res.headers.get('content-type') || '').includes('json') ? await res.json().catch(() => null) : null;
+  if (!res.ok || reply?.ok === false) {
+    console.error('Webhook failed', res.status, reply?.error);
     return;
   }
   if (env.DB) await env.DB.prepare('UPDATE enquiries SET forwarded = 1 WHERE id = ?').bind(e.id).run();
