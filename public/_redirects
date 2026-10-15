@@ -10,8 +10,6 @@
 /services/*                             /#services  301
 /contact-us                             /#contact   301
 /contact-us/                            /#contact   301
-/privacy                                /           301
-/privacy/                               /           301
 /cookie-policy                          /           301
 /cookie-policy/                         /           301
 /hello-world/                           /           301
