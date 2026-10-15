@@ -5,7 +5,7 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Impressum | MAME Capital">
   <main class="impressum">
     <div class="wrap">
-      <a class="back" href="/">MAME Capital</a>
+      <a class="back" href="/"><img src="/images/mame-logo-on-dark.svg?v=8" alt="MAME Capital home" width="174" height="42" /></a>
       <h1>Impressum</h1>
       <address>
         <strong>MAME Capital GmbH</strong><br />
@@ -23,7 +23,7 @@ import Layout from '../layouts/Layout.astro';
   .impressum {
     min-height: 100vh;
     background: #262a36;
-    color: #cdd6f4;
+    color: #e4e0db;
     font-family: 'Instrument Sans', system-ui, sans-serif;
   }
 
@@ -34,10 +34,13 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .back {
-    color: #a6adc8;
-    font-family: 'Martian Mono', ui-monospace, monospace;
-    font-size: 13px;
-    text-decoration: none;
+    display: inline-block;
+  }
+
+  .back img {
+    display: block;
+    height: 42px;
+    width: auto;
   }
 
   h1 {
@@ -49,14 +52,14 @@ import Layout from '../layouts/Layout.astro';
   }
 
   address {
-    color: #a6adc8;
+    color: #b8b3b0;
     font-size: 18px;
     font-style: normal;
     line-height: 1.75;
   }
 
   address strong {
-    color: #cdd6f4;
+    color: #e4e0db;
     font-weight: 500;
   }
 
@@ -70,12 +73,12 @@ import Layout from '../layouts/Layout.astro';
   }
 
   p a {
-    color: #cdd6f4;
+    color: #e4e0db;
     text-decoration: none;
   }
 
   p a:hover {
-    color: #9db9a0;
+    color: #b3a265;
   }
 
   @media (max-width: 640px) {

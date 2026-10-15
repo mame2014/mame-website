@@ -2,7 +2,7 @@
   <canvas id="net" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="mm eyebrow rv">Zürich · Since 2014 · Capital, meet opportunity<span class="cursor"></span></div>
-    <h1 class="disp hero-title rv d1">We make the connection.<br /><span class="hero-accent">The deal is yours.</span></h1>
+    <h1 class="disp hero-title rv d1">We make the<br />connection.<br /><span class="hero-accent">You make the deal.</span></h1>
     <p class="lead rv d2">Private introductions between capital and opportunity. Swiss, independent, discreet.</p>
     <div class="rv d3"><a class="btn btn-p" href="#contact">Request an introduction <span aria-hidden="true">→</span></a></div>
   </div>
@@ -20,8 +20,8 @@
     display: block;
     width: 100%;
     height: 100%;
-    -webkit-mask-image: radial-gradient(120% 100% at 72% 45%, #000 35%, rgba(0, 0, 0, 0.35) 75%, transparent 100%);
-    mask-image: radial-gradient(120% 100% at 72% 45%, #000 35%, rgba(0, 0, 0, 0.35) 75%, transparent 100%);
+    -webkit-mask-image: radial-gradient(120% 100% at 78% 50%, #000 45%, rgba(0, 0, 0, 0.4) 80%, transparent 100%);
+    mask-image: radial-gradient(120% 100% at 78% 50%, #000 45%, rgba(0, 0, 0, 0.4) 80%, transparent 100%);
   }
 
   .hero .wrap {
@@ -33,35 +33,21 @@
     padding-bottom: 160px;
   }
 
+  .hero .eyebrow {
+    color: #8f8a87;
+  }
+
   .hero-title {
-    max-width: 1100px;
+    max-width: 820px;
     margin: 0;
     font-size: 96px;
     line-height: 1.02;
   }
 
   .hero-accent {
-    position: relative;
-    display: inline-block;
     color: var(--accent);
     font-style: italic;
-    font-weight: 300;
-  }
-
-  .hero-accent::after {
-    position: absolute;
-    right: 0;
-    bottom: -6px;
-    left: 0;
-    width: 0;
-    height: 3px;
-    background: var(--accent);
-    content: '';
-    animation: hero-underline 1.2s cubic-bezier(.2, .8, .2, 1) .6s forwards;
-  }
-
-  @keyframes hero-underline {
-    to { width: 100%; }
+    font-weight: 400;
   }
 
   @media (max-width: 860px) {
@@ -72,13 +58,6 @@
 
     .hero-title {
       font-size: 48px;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hero-accent::after {
-      width: 100%;
-      animation: none;
     }
   }
 </style>
@@ -96,7 +75,7 @@
   var c=document.getElementById('net');if(!c)return;
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var ctx=c.getContext('2d'),W,H,dpr=Math.min(window.devicePixelRatio||1,2),mx=-1e4,my=-1e4,far=[],near=[],arcs=[],nextAt=0,prev=0,run=true,ox=0,oy=0;
-  var SAGE='157,185,160',INK='205,214,244';
+  var SAGE='179,162,101',INK='228,224,219';
   function mk(n,sp){var a=[];for(var i=0;i<n;i++)a.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*sp,vy:(Math.random()-.5)*sp,hot:0});return a}
   function size(){var r=c.parentNode.getBoundingClientRect();W=r.width;H=r.height;c.width=W*dpr;c.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);far=mk(Math.round(Math.min(130,W*H/8000)),.12);near=mk(Math.round(Math.min(70,W*H/17000)),.3);arcs=[]}
   size();window.addEventListener('resize',size);
@@ -111,19 +90,19 @@
     var tx=mx>-1e3?(mx-W/2)*-.015:0,ty=mx>-1e3?(my-H/2)*-.015:0;ox+=(tx-ox)*.05;oy+=(ty-oy)*.05;
     ctx.clearRect(0,0,W,H);
     var i,j,p,o;
-    for(i=0;i<far.length;i++){p=far[i];if(!reduce){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1}ctx.fillStyle='rgba('+INK+',.16)';ctx.fillRect(p.x+ox*.4,p.y+oy*.4,1,1)}
+    for(i=0;i<far.length;i++){p=far[i];if(!reduce){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1}ctx.fillStyle='rgba('+INK+',.26)';ctx.fillRect(p.x+ox*.4,p.y+oy*.4,1,1)}
     for(i=0;i<near.length;i++){p=near[i];if(!reduce){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1}p.hot=Math.max(0,p.hot-dt/1400)}
     ctx.lineWidth=1;
-    for(i=0;i<near.length;i++)for(j=i+1;j<near.length;j++){var a=near[i],b=near[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<130){ctx.strokeStyle='rgba('+INK+','+(.09*(1-d/130))+')';ctx.beginPath();ctx.moveTo(a.x+ox,a.y+oy);ctx.lineTo(b.x+ox,b.y+oy);ctx.stroke()}}
+    for(i=0;i<near.length;i++)for(j=i+1;j<near.length;j++){var a=near[i],b=near[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<130){ctx.strokeStyle='rgba('+INK+','+(.15*(1-d/130))+')';ctx.beginPath();ctx.moveTo(a.x+ox,a.y+oy);ctx.lineTo(b.x+ox,b.y+oy);ctx.stroke()}}
     if(mx>-1e3)for(i=0;i<near.length;i++){p=near[i];var dm=Math.hypot(mx-p.x-ox,my-p.y-oy);if(dm<170){ctx.strokeStyle='rgba('+SAGE+','+(.45*(1-dm/170))+')';ctx.beginPath();ctx.moveTo(mx,my);ctx.lineTo(p.x+ox,p.y+oy);ctx.stroke();p.hot=Math.max(p.hot,.6)}}
     if(!reduce&&ts>nextAt&&arcs.length<4){spawn();nextAt=ts+700+Math.random()*700}
     for(i=arcs.length-1;i>=0;i--){var A=arcs[i];A.t+=reduce?3000:dt;var pr=ease(Math.min(1,A.t/1200)),fade=A.t<1200?1:Math.max(0,1-(A.t-1200)/1800);
-      ctx.strokeStyle='rgba('+INK+','+(.22*fade)+')';ctx.lineWidth=1;ctx.beginPath();
+      ctx.strokeStyle='rgba('+INK+','+(.30*fade)+')';ctx.lineWidth=1;ctx.beginPath();
       for(j=0;j<=40;j++){o=q(A,pr*j/40);if(j)ctx.lineTo(o[0]+ox,o[1]+oy);else ctx.moveTo(o[0]+ox,o[1]+oy)}ctx.stroke();
       if(A.t<1200){o=q(A,pr);ctx.shadowColor='rgba('+INK+',.8)';ctx.shadowBlur=10;ctx.fillStyle='rgba('+INK+',.75)';ctx.beginPath();ctx.arc(o[0]+ox,o[1]+oy,2.2,0,6.283);ctx.fill();ctx.shadowBlur=0;A.a.hot=1}
       else{A.b.hot=Math.max(A.b.hot,fade);var rr=(A.t-1200)/700;if(rr<1){ctx.strokeStyle='rgba('+INK+','+(.25*(1-rr))+')';ctx.beginPath();ctx.arc(A.b.x+ox,A.b.y+oy,4+rr*18,0,6.283);ctx.stroke();ctx.beginPath();ctx.arc(A.a.x+ox,A.a.y+oy,4+rr*18,0,6.283);ctx.stroke()}}
       if(A.t>3000&&!reduce)arcs.splice(i,1)}
-    for(i=0;i<near.length;i++){p=near[i];var h=p.hot;ctx.fillStyle=h>.05?'rgba('+SAGE+','+(.5+.5*h)+')':'rgba('+INK+',.42)';ctx.beginPath();ctx.arc(p.x+ox,p.y+oy,1.4+h*1.4,0,6.283);ctx.fill()}
+    for(i=0;i<near.length;i++){p=near[i];var h=p.hot;ctx.fillStyle=h>.05?'rgba('+SAGE+','+(.5+.5*h)+')':'rgba('+INK+',.55)';ctx.beginPath();ctx.arc(p.x+ox,p.y+oy,1.4+h*1.4,0,6.283);ctx.fill()}
     if(!reduce&&run)requestAnimationFrame(frame);
   }
   if(reduce){spawn();spawn();}
