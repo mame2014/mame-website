@@ -1,0 +1,22 @@
+# Old WordPress URLs → new single-page site
+/about                                  /#about     301
+/about/                                 /#about     301
+/our-team                               /#about     301
+/our-team/                              /#about     301
+/career                                 /#about     301
+/career/                                /#about     301
+/services                               /#services  301
+/services/                              /#services  301
+/services/*                             /#services  301
+/contact-us                             /#contact   301
+/contact-us/                            /#contact   301
+/privacy                                /           301
+/privacy/                               /           301
+/cookie-policy                          /           301
+/cookie-policy/                         /           301
+/hello-world/                           /           301
+/category/*                             /           301
+/author/*                               /           301
+/wp-admin/*                             /           301
+/wp-login.php                           /           301
+/feed/*                                 /           301
